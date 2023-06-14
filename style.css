@@ -1,3 +1,6 @@
+body{
+    text-align: center;
+}
 .heading{
     width: 100%;
     text-align: left;   
@@ -8,9 +11,6 @@
 .heading button{
     float: right;
     border: 1px solid white;
-}
-.big_image{
-    width: 0%;
 }
 #start ,#status{
     font-size: 22px;
