@@ -27,9 +27,9 @@ ball = {
     dx:3,
     dy:3
 }
-
 function setup(){
   canvas =  createCanvas(700,550);
+  canvas.parent("canvas");
   video=createCapture(VIDEO);
   video.size(700,550);
   poseNet=ml5.poseNet(video, modelLoaded);
