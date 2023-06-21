@@ -27,8 +27,12 @@ ball = {
     dx:3,
     dy:3
 }
+function preLoad(){
+  balltouch= loadSound("ball_touch_paddel.wav");
+  loseBall= loadSound("missed.wav");
+}
 function setup(){
-  canvas =  createCanvas(700,550);
+  canvas = createCanvas(700,550);
   canvas.parent("canvas");
   video=createCapture(VIDEO);
   video.size(700,550);
@@ -40,12 +44,17 @@ function modelLoaded(){
 }
 noseX=0;
 noseY=0;
+GameStatus="";
 function gotPoses(results){
   if(results.length>0){
     noseX= results[0].pose.nose.x;
     noseY= results[0].pose.nose.y;
     console.log("noseX = "+ noseX + " noseY = "+ noseY);
   }
+}
+function startGame(){
+GameStatus="Start";
+document.getElementById("status").innerHTML="Carregando jogo"
 }
 function draw(){
 
