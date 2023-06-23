@@ -57,9 +57,9 @@ GameStatus="Start";
 document.getElementById("status").innerHTML="Carregando jogo"
 }
 function draw(){
-
+if(GameStatus=="Start"){
   background(0); 
-
+  image(video, 0, 0, 700, 550);
   fill("black");
   stroke("black");
   rect(680,0,20,700);
@@ -97,9 +97,7 @@ function draw(){
   //Chamar a função move() (muito importante para o jogo)
   move();
 }
-
-
-
+}
 //Função reset() para quando a bola não colidir com a raquete
 function reset(){
    ball.x = width/2+100,
@@ -173,8 +171,6 @@ if(pcscore ==4){
        ball.dy =- ball.dy;
    }   
 }
-
-
 //Largura e altura do canvas e velocidade da bola 
 function models(){
     textSize(18);
@@ -184,8 +180,6 @@ function models(){
     text("Velocidade:"+abs(ball.dx),65,15);
     text("Altura:"+height,300,15)
 }
-
-
 //Esta função ajuda a evitar que a raquete saia do canvas
 function paddleInCanvas(){
   if(mouseY+paddle1Height > height){
