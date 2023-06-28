@@ -27,7 +27,7 @@ ball = {
     dx:3,
     dy:3
 }
-function preLoad(){
+function preload(){
   balltouch= loadSound("ball_touch_paddel.wav");
   loseBall= loadSound("missed.wav");
 }
@@ -36,6 +36,7 @@ function setup(){
   canvas.parent("canvas");
   video=createCapture(VIDEO);
   video.size(700,550);
+  video.hide();
   poseNet=ml5.poseNet(video, modelLoaded);
   poseNet.on("pose", gotPoses);
 }
@@ -63,11 +64,12 @@ if(GameStatus=="Start"){
   fill("black");
   stroke("black");
   rect(680,0,20,700);
-
   fill("black");
   stroke("black");
   rect(0,0,20,700);
-
+fill(0,140,140);
+stroke(0,140,140);
+circle(noseX, noseY, 30);
   //Chamar a função paddleInCanvas() 
   paddleInCanvas();
 
@@ -75,7 +77,7 @@ if(GameStatus=="Start"){
   fill(250,0,0);
   stroke(0,0,250);
   strokeWeight(0.5);
-  paddle1Y = mouseY; 
+  paddle1Y = noseY; 
   rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
 
 
@@ -188,4 +190,9 @@ function paddleInCanvas(){
   if(mouseY < 0){
     mouseY =0;
   }  
+}
+function restart(){
+  loop();
+  pcscore=0;
+  playerscore=0;
 }
